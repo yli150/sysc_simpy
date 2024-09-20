@@ -2,7 +2,7 @@ from simpy import Environment
 import simpy 
 import functools
 
-class SCEvent():
+class SCEventQueue():
     '''
     SCEventQueue is wrap of a simpy event  
     '''
