@@ -47,7 +47,7 @@ class ModuleB(SCModule):
 
 if __name__ == '__main__':
     '''
-    https://github.com/learnwithexamples/learnsystemc/blob/master/basic/08_event/event.cpp
+    https://www.learnsystemc.com/basic/event_combined
     '''
     env = simpy.Environment()
     m = ModuleB(env, 'b')
