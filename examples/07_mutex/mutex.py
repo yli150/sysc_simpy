@@ -57,6 +57,7 @@ class ModuleB(SCModule):
 
 if __name__ == '__main__':
     '''
+    https://github.com/learnwithexamples/learnsystemc/blob/master/basic/16_channel_mutex/mutex.cpp
     m increamented by two threads from 0 to 16 
     '''
     env = simpy.Environment()
