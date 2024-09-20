@@ -16,6 +16,7 @@ class SCEvent():
         '''
         def _callback(*args):
             self._e.succeed()
+            self._e = self.env.event()
 
         t = self.env.timeout(delay)
         t.callbacks.append(_callback)
@@ -28,8 +29,4 @@ class SCEvent():
         '''
         Return event with callback to reset event
         '''
-        def _callback_reset(*args):
-            self._e = self.env.event()
-
-        self._e.callbacks.append(_callback_reset)
         return self._e 

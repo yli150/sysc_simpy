@@ -8,6 +8,8 @@ class ModuleB(SCModule):
         self.xevent = SCEvent(env)
         self.env.process(self.tigger())
         self.env.process(self.catcher())
+        self.env.process(self.catcher2())
+
 
     def tigger(self):
         while True:
@@ -18,6 +20,11 @@ class ModuleB(SCModule):
         while True:
             yield self.xevent.wait() 
             print(f'Catch @{self.env.now}')
+
+    def catcher2(self):
+        while True:
+            yield self.xevent.wait() 
+            print(f'Catch2 @{self.env.now}')
 
 
 if __name__ == '__main__':
