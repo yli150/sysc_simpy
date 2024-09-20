@@ -2,7 +2,7 @@ from simpy import Environment
 import simpy 
 
 
-class Clock():
+class SCClock():
     '''
     Clock is a particular event which runs in one cycle 
     '''
