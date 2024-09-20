@@ -24,6 +24,7 @@ class ModuleB(SCModule):
 if __name__ == '__main__':
     '''
     https://www.learnsystemc.com/basic/event_queue
+    https://github.com/learnwithexamples/learnsystemc/blob/master/basic/14_event_queue/event_queue.cpp
 
     Expected Results 
     Trigger @0
