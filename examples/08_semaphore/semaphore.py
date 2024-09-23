@@ -1,7 +1,8 @@
 from syscsim.sc_module import SCModule
 from syscsim.sc_event_queue import SCEventQueue
 from syscsim.sc_semaphore import SCSemaphore
-import simpy 
+import simpy
+
 
 class ModuleB(SCModule):
     def __init__(self, env, name) -> None:
@@ -14,7 +15,7 @@ class ModuleB(SCModule):
     def thread2(self):
         while True:
             req = self.semaphore.wait()
-            yield req 
+            yield req
             print(f'2 get lock {self.env.now} {self.semaphore.get_value()}')
             yield self.env.timeout(1)
             yield self.semaphore.post(req)
@@ -22,7 +23,7 @@ class ModuleB(SCModule):
     def thread1(self):
         while True:
             req = self.semaphore.wait()
-            yield req 
+            yield req
             print(f'1 get lock {self.env.now} {self.semaphore.get_value()}')
             yield self.env.timeout(1)
             yield self.semaphore.post(req)
@@ -30,10 +31,11 @@ class ModuleB(SCModule):
     def thread3(self):
         while True:
             req = self.semaphore.wait()
-            yield req 
+            yield req
             print(f'3 get lock {self.env.now} {self.semaphore.get_value()}')
             yield self.env.timeout(1)
             yield self.semaphore.post(req)
+
 
 if __name__ == '__main__':
     '''
@@ -42,4 +44,3 @@ if __name__ == '__main__':
     env = simpy.Environment()
     m = ModuleB(env, 'b')
     env.run(6)
-

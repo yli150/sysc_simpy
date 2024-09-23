@@ -1,8 +1,9 @@
 from simpy import Environment
-import simpy 
+import simpy
 from simpy import Resource, Event
 from simpy.resources.resource import Request
-from typing import Any 
+from typing import Any
+
 
 class SCSingnal():
     '''
@@ -10,19 +11,19 @@ class SCSingnal():
     '''
     def __init__(self, env: Environment) -> None:
         self.env = env
-        self.value = None 
+        self.value = None
         self._e = self.env.event()
 
     def read(self):
-        return self.value 
+        return self.value
 
-    def write(self, v:Any):
+    def write(self, v: Any):
         if self.value == v:
-            return 
-        self.value = v 
-        # tirgger event and create a new one 
+            return
+        self.value = v
+        # tirgger event and create a new one
         self._e.succeed()
         self._e = self.env.event()
 
     def event(self):
-        return self._e 
+        return self._e

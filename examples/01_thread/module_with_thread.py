@@ -1,5 +1,6 @@
 from syscsim.sc_module import SCModule
-import simpy 
+import simpy
+
 
 class ModuleB(SCModule):
     def __init__(self, env, name) -> None:
