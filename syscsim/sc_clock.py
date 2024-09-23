@@ -1,5 +1,5 @@
 from simpy import Environment
-import simpy 
+import simpy
 
 
 class SCClock():
@@ -14,7 +14,7 @@ class SCClock():
     def run(self):
         while True:
             self.event = self.env.timeout(1)
-            yield self.event 
+            yield self.event
 
     def wait(self):
-        return self.event 
+        return self.event

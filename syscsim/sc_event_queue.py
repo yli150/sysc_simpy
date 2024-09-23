@@ -1,6 +1,7 @@
 from simpy import Environment
-import simpy 
+import simpy
 import functools
+
 
 class SCEventQueue():
     '''
@@ -10,21 +11,21 @@ class SCEventQueue():
         self.env = env
         self._e = self.env.event()
 
-    def notify(self, delay:int) -> simpy.Event:
-        # Separate the time delay of events from caller process 
+    def notify(self, delay: int) -> simpy.Event:
+        # Separate the time delay of events from caller process
         self.env.process(self._notify(delay))
 
-    def _notify(self, delay:int) -> simpy.Event:
+    def _notify(self, delay: int) -> simpy.Event:
         '''
         Return a timeout event with a callback func to release event 
-        '''    
+        '''
         def _callback(*args):
             self._e.succeed()
             self._e = self.env.event()
 
         t = self.env.timeout(delay)
-        t.callbacks.append(_callback)   
-        yield t 
+        t.callbacks.append(_callback)
+        yield t
 
     def triggered(self):
         return self._e.triggered()
@@ -33,4 +34,4 @@ class SCEventQueue():
         '''
         Return event with callback to reset event
         '''
-        return self._e 
+        return self._e

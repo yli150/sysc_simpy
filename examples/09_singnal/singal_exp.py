@@ -1,6 +1,7 @@
 from syscsim.sc_module import SCModule
 from syscsim.sc_singnal import SCSingnal
-import simpy 
+import simpy
+
 
 class ModuleB(SCModule):
     def __init__(self, env, name) -> None:
@@ -45,6 +46,7 @@ class ModuleC(SCModule):
             yield self.singnal.event()
             print(f'catch event value @ {self.env.now} value {self.singnal.read()}')
 
+
 if __name__ == '__main__':
     '''
     https://github.com/learnwithexamples/learnsystemc/blob/master/basic/20_signal_event/signal_event.cpp
@@ -52,7 +54,6 @@ if __name__ == '__main__':
     env = simpy.Environment()
     m = ModuleB(env, 'b')
     env.run(10)
-
 
     env = simpy.Environment()
     n = ModuleC(env, 'b')

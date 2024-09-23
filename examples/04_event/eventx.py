@@ -1,6 +1,7 @@
 from syscsim.sc_module import SCModule
 from syscsim.sc_event import SCEvent
-import simpy 
+import simpy
+
 
 class ModuleB(SCModule):
     def __init__(self, env, name) -> None:
@@ -15,16 +16,15 @@ class ModuleB(SCModule):
             print(f'Trigger @{self.env.now}')
             self.xevent.notify(3)
             yield self.env.timeout(5)
-            
 
     def catcher(self):
         while True:
-            yield self.xevent.wait() 
+            yield self.xevent.wait()
             print(f'Catch @{self.env.now}')
 
     def catcher2(self):
         while True:
-            yield self.xevent.wait() 
+            yield self.xevent.wait()
             print(f'Catch2 @{self.env.now}')
 
 

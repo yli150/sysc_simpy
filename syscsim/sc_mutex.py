@@ -1,8 +1,9 @@
 from simpy import Environment
-import simpy 
+import simpy
 from simpy import Resource, Event
 from simpy.resources.resource import Request
 import functools
+
 
 class SCMutex():
     '''
@@ -19,5 +20,5 @@ class SCMutex():
         '''
         return self._token.request()
 
-    def unlock(self, req:Request) -> Event:
+    def unlock(self, req: Request) -> Event:
         return self._token.release(req)

@@ -1,7 +1,8 @@
 from syscsim.sc_module import SCModule
 from syscsim.sc_clock import Clock
 from simpy import Environment
-import simpy 
+import simpy
+
 
 class ModuleC(SCModule):
     def __init__(self, env: Environment, name: str) -> None:
@@ -10,7 +11,6 @@ class ModuleC(SCModule):
 
     def method(self):
         print(f'method triggered @ {self.env.now}')
-
 
 
 if __name__ == '__main__':
